@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@model List<Sanpham>
+@section TopSelling {
+	@foreach (var item in Model)
+	{
+		<div class="product">
+			<div class="product-img">
+				<img src="../LayoutHome/img/Product/@item.Anhbia" alt="">
+				<div class="product-label">
+				</div>
+			</div>
+			<div class="product-body">
+				<h3 class="product-name">
+					<a asp-controller="Product" asp-action="ChiTietSP"
+					   asp-route-masp="@item.Masp">@item.Tensp</a>
+				</h3>
+				<h4 class="product-price">@item.Giatien vnd</h4>
+				<div class="product-rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+				<div class="product-btns">
+					<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+				</div>
+			</div>
+			<div class="add-to-cart">
+				<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+			</div>
+		</div>		
+	}
+}
+@foreach(var item in Model)
+{
+	if (@item.Sanphammoi == true)
+	{
+		<div class="product">
+			<div class="product-img">
+				<img src="../LayoutHome/img/Product/@item.Anhbia" alt="">
+				<div class="product-label">
+					<span class="sale"></span>
+					<span class="new">NEW</span>
+				</div>
+			</div>
+			<div class="product-body">
+				<h3 class="product-name">
+					<a asp-controller="Product" asp-action="ChiTietSP"
+					   asp-route-masp="@item.Masp">@item.Tensp</a>
+				</h3>
+				<h4 class="product-price">@item.Giatien vnd</h4>
+				<div class="product-rating">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+				</div>
+				<div class="product-btns">
+					<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+				</div>
+			</div>
+			<div class="add-to-cart">
+				<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+			</div>
+		</div>
+	}
+	
+}

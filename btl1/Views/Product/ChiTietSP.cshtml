@@ -1,0 +1,139 @@
+﻿@{
+	ViewData["Title"] = "ChiTietSP";
+	Layout = "~/Views/Shared/_LayoutProduct.cshtml";
+}
+
+@model btl1.ViewModels.HomeProductDetailViewModel
+<!-- Product main img -->
+<div class="col-md-5 col-md-push-2">
+	<div id="product-main-img">
+		<div class="product-preview">
+			<img src="../LayoutHome/img/Product/@Model.Sanpham.Anhbia" alt="">
+		</div>
+		@foreach(var item in Model.anhSps)
+		{
+			<div class="product-preview">
+				<img src="../LayoutHome/img/Product/@item.Fileanh" alt="">
+			</div>
+		}
+	</div>
+</div>
+<!-- /Product main img -->
+<!-- Product thumb imgs -->
+<div class="col-md-2  col-md-pull-5">
+	<div id="product-imgs">
+		<div class="product-preview">
+			<img src="../LayoutHome/img/Product/@Model.Sanpham.Anhbia" alt="">
+		</div>
+		@foreach (var item in Model.anhSps)
+		{
+			<div class="product-preview">
+				<img src="../LayoutHome/img/Product/@item.Fileanh" alt="">
+			</div>
+		}
+	</div>
+</div>
+<!-- /Product thumb imgs -->
+<!-- Product details -->
+<div class="col-md-5">
+	<div class="product-details">
+		<h2 class="product-name">@Model.Sanpham.Tensp</h2>
+		<div>
+			<div class="product-rating">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star-o"></i>
+			</div>
+			<a class="review-link" href="#">10 Review(s) | Add your review</a>
+		</div>
+		<div>
+			<h3 class="product-price"> @Model.Sanpham.Giatien</h3>
+			<span class="product-available">In Stock</span>
+		</div>
+		<p>@Model.Sanpham.Mota</p>
+		<div class="product-options">
+			<label>
+				Size
+				<select class="input-select">
+					<option value="0">S</option>
+					<option value="0">M</option>
+					<option value="0">L</option>
+					<option value="0">2XL</option>
+					<option value="0">3XL</option>
+				</select>
+			</label>
+			<label>
+				Color
+				<select class="input-select">
+					<option value="0">Red</option>
+					<option value="0">Blue</option>
+					<option value="0">Green</option>
+					<option value="0">White</option>
+					<option value="0">Brown</option>
+				</select>
+			</label>
+		</div>
+
+		<div class="add-to-cart">
+			<div class="qty-label">
+				Qty
+				<div class="input-number">
+					<input type="number">
+				</div>
+			</div>
+			<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+		</div>
+
+		<ul class="product-links">
+			<li>Category:</li>
+			<li><a asp-controller="Store" asp-action="SanPhamTheoChatLieu"
+			asp-route-maCl="@Model.ChatLieu.MaCl"> @Model.ChatLieu.TenCl </a></li>
+			<li>
+				<a asp-controller="Store" asp-action="SanPhamTheoBrand"
+				   asp-route-maHang="@Model.Hangsanxuat.Mahang">@Model.Hangsanxuat.Tenhang</a>
+			</li>
+		</ul>
+
+		<ul class="product-links">
+			<li>Share:</li>
+			<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+			<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+		</ul>
+
+	</div>
+</div>
+<!-- /Product details -->
+@section OtherProduct {
+	@foreach (var item in Model.sanphams)
+	{
+		<div class="col-md-3 col-xs-6">
+			<div class="product">
+				<div class="product-img">
+					<img src="../LayoutHome/img/Product/@item.Anhbia" alt="">
+				</div>
+				<div class="product-body">
+					<p class="product-category">Category</p>
+					<h3 class="product-name">
+						<a asp-controller="Product" asp-action="ChiTietSP"
+						   asp-route-masp="@item.Masp">@item.Tensp</a>
+					</h3>
+					<h4 class="product-price">@item.Giatien vnd</h4>
+					<div class="product-rating">
+					</div>
+					<div class="product-btns">
+						<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+					</div>
+				</div>
+				<div class="add-to-cart">
+					<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+				</div>
+			</div>
+		</div>
+	}
+
+}
+

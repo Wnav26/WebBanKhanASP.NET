@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "SanPhamTheoBrand";
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+}
+@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Sanpham>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<!-- product -->
+		<div class="col-md-4 col-xs-6">
+			<div class="product">
+				<div class="product-img">
+					<img src="../LayoutHome/img/Product/@item.Anhbia" alt="">
+				</div>
+				<div class="product-body">
+					<p class="product-category"></p>
+					<h3 class="product-name">
+						<a class="product-name-limit" asp-controller="Product" asp-action="ChiTietSP"
+						   asp-route-masp="@item.Masp">@item.Tensp</a>
+					</h3>
+					<h4 class="product-price">@item.Giatien vnd</h4>
+					<div class="product-rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</div>
+					<div class="product-btns">
+						<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+					</div>
+				</div>
+				<div class="add-to-cart">
+					<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+				</div>
+			</div>
+		</div>
+		<!-- /product -->
+	}
+</div>
+<div class="store-filter clearfix">
+	@Html.PagedListPager(Model, page => Url.Action("SanPhamTheoBrand", new{page = page, maHang = ViewBag.maHang}))
+</div>
+
+
+

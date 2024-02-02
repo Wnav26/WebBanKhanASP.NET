@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ChatLieu>
+@foreach (var item in Model)
+{
+	<div class="input-checkbox">
+		<a asp-controller="Store" asp-action="SanPhamTheoChatLieu"
+			asp-route-maCl="@item.MaCl" id="category-1">
+			<span></span>
+			@item.TenCl
+			<small></small>
+		</a>
+	</div>
+}
